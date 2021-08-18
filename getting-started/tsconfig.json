@@ -1,0 +1,8 @@
+// 프로젝트가 TS를 어떻게 이해할지 정의
+{
+  "compilerOptions": {
+    "allowJs": true, // JS 허용
+    "checkJs": true,
+    "noImplicitAny": true // 모든 타입에 대해 any라도 넣어야함
+  }
+}
