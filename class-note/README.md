@@ -17,6 +17,30 @@ let heroes: Array<string> = ['Capt', 'Thor', 'Hulk'];
 - 리터럴 방식  
 ```let items: number[] = [1,2,3];```
 
+-  TS 튜플(배열에 각각의 인덱스에 특정 타입을 지정)
+```
+let address: [string, number] = ['gannam', 10];
+```
+
+-  TS 객체
+```
+let obj: object ={};
+// let person: object = {
+//     name:'capt',
+//     age: '10'
+// }
+// 구체적으로 프로퍼티의 타입까지 지정할수 잇다
+let person: { name: string, age: number } = {
+    name:'thor',
+    age:1000
+};
+```
+
+- TS 진위값
+```
+let show: boolean = true;
+```
+
 ### 함수
 - 파라미터, 반환값 타입을 정의 해준다
 ```
@@ -24,10 +48,12 @@ let heroes: Array<string> = ['Capt', 'Thor', 'Hulk'];
     return a + b
  }
 ```
+
 - JS의 유연함과는 다르게 추가 인자를 받지 않고 잡아준다.
 ```
 sum(10, 20, 30, 40); // 30, 40에 err
 ```
+
 - 옵셔널 파라미터: 인자가 상황에 따라 달라질경우 사용
 ```
 function log(a: string, b?: string) {

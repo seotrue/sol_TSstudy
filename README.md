@@ -5,5 +5,8 @@
 - [색션2](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/getting-started).
 
 ### 색션3: 변수와 함수 타입 정의
-- [색션3]()
+- [색션3](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
+
+### 색션4: 할일 관리 애플리케이션 
+- [색션4](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz)
 
