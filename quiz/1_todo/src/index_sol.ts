@@ -1,7 +1,8 @@
-let todoItems: object[];
+// 할 일에 대한 객체 모습이(shape) 구체화 object[]
+let todoItems: { id: number; title: string; done: boolean }[];
 
 // api
-function fetchTodoItems(): object[] {
+function fetchTodoItems(): { id: number; title: string; done: boolean }[] {
     const todos:object[] = [
         { id: 1, title: '안녕', done: false },
         { id: 2, title: '타입', done: false },
@@ -16,7 +17,7 @@ function fetchTodos(): object[] {
     return todos;
 }
 
-function addTodo(todo: object): void {
+function addTodo(todo: { id: number; title: string; done: boolean  }): void {
     todoItems.push(todo);
 }
 
@@ -24,30 +25,41 @@ function deleteTodo(index: number) :void {
     todoItems.splice(index, 1);
 }
 
-function completeTodo(index: number, todo: object): void {
+function completeTodo(index: number, todo: { id: number; title: string; done: boolean }): void {
     todo.done = true;
     todoItems.splice(index, 1, todo);
 }
 
 // business logic
-function logFirstTodo() {
+// 할일프로적트에서 첫번째것을 반환하는 목적을 가진 함수
+function logFirstTodo(): object {
     return todoItems[0];
 }
 
-function showCompleted() {
+
+function showCompleted(): object[] {
     return todoItems.filter(item => item.done);
 }
 
 // TODO: 아래 함수의 내용을 채워보세요. 아래 함수는 `addTodo()` 함수를 이용하여 2개의 새 할 일을 추가하는 함수입니다.
-function addTwoTodoItems(todos: []): void {
+function addTwoTodoItems(): void {
     // addTodo() 함수를 두 번 호출하여 todoItems에 새 할 일이 2개 추가되어야 합니다.
-    todos.forEach(todo => {
-        addTodo(todo);
+    const item1 = {
+        id: 4,
+        title: '아이템 4',
+        done: false
+    };
+    addTodo(item1);
+    addTodo({
+        id: 5,
+        title: '아이템 5',
+        done: false
+
     })
 }
 
 // NOTE: 유틸 함수
-function log() {
+function log(): void {
     console.log(todoItems);
 }
 
