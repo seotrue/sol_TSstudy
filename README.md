@@ -13,7 +13,7 @@
 ### 색션5: 인터페이스
 - [색션5](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
-### 색션6: 
+### 색션6: 타입 별칭
 - [색션6](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
 ### 색션7: 
