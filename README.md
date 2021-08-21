@@ -16,7 +16,7 @@
 ### 색션6: 타입 별칭
 - [색션6](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
-### 색션7: 
+### 색션7: 유니온 타입, 인터섹션 타입
 - [색션7](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
 ### 색션8: 

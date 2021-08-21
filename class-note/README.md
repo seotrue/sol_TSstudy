@@ -170,3 +170,64 @@ const name: MyName = 'capt'
 1. 타입 별칭은 확장이 안된다 
 2. 가능한한 type보다는 ibterface로 선언하는걸 추천(공식문서)
 3. 타입별칭은 타입에 별칭은 해준거뿐 (ctrl+ alt 해보면 모양이 다른걸 확인할수 잇다) 
+
+### 색션7: 유니온, 인터센션
+
+##### 연산자를 이용한 타입 정의 - 유니온 타입(|)
+- 유니온 타입: 특정 변수 or 함수등의 타입을 하나의 타입 이상을 쓸수 있게 만들수 있는것 
+```
+function logMessage(value: string | number){ // 연산자 | 사용 하면 기재한 타입 모두 사용 가능
+    console.log(value)
+}
+logMessage('hi')
+logMessage(100)
+```
+
+##### 유니온 타입 장점
+- 타입가드: 특정 타입으로 타입의 범위를 좁혀나가는 (필터링 하는 )과정 가능
+
+##### 유니온 타입 특징
+- 공통 속성(보정된)만 접근
+```
+interface Developer {
+    name: string;
+    skill: string;
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+// 두개의 인터페이스를 유니온 타입으로 연결 했을때
+function askSomeone(someone: Developer | Person) {
+    // 공통 속성인 name만 추론 
+    someone.name; 
+}
+``` 
+
+##### 인터섹션(&) and
+```
+function askSomeone(someone: Developer & Person) {
+    // Developer,Person의 속성 모두 포함한 하나의 타입 
+    someone.name;
+    someone.age;
+    someone.skill;
+}
+```
+
+##### 유니온 vs 인터섹션'
+```
+// 유니온 타입 askSomeone 호출시
+askSomeone({
+    name: '디벨로퍼',
+    skill: '웹개발'
+})
+
+// 인터섹션 호출시
+askSomeone({
+    name: '디벨로퍼',
+    skill: '웹개발',
+    age: 34
+})
+ 
+```
