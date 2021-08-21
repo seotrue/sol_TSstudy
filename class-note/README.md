@@ -231,3 +231,47 @@ askSomeone({
 })
  
 ```
+
+### 색션:8 이넘(Enum)
+- 특정 값들의 집합을 의마하는 자료형
+1. 숫자형 이넘
+```
+// 별도의 값을 지정하지 않으면 숫자형 이넘으로 취급한다
+enum Shoes {
+    Nike,
+    Adidas
+}
+let myShoes = Shoes.Nike;
+console.log(myShoes) // 0
+```
+
+2. 문자형 이넘
+```
+enum Shoes {
+    Nike: '나이키,
+    Adidas: ' 아디다시
+}
+let myShoes = Shoes.Nike;
+console.log(myShoes) // 나이키
+```  
+- ![enums/JS](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/enum.PNG)
+
+##### 이넘 활용사례
+- 단순히 문자 비교 X
+```
+enum Answer {
+    Yes = 'Y',
+    No = 'N',
+}
+
+function askQuestion(answer: Answer) {
+    if (answer === Answer.Yes) {
+        console.log('정답입니다');
+    }
+    if (answer === Answer.No) {
+        console.log('오답입니다');
+    }
+}
+askQuestion(Answer.Yes); // O
+askQuestion('Yes'); // X
+```
