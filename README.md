@@ -10,3 +10,18 @@
 ### 색션4: 할일 관리 애플리케이션 
 - [색션4](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz)
 
+### 색션5: 인터페이스
+- [색션5](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
+
+### 색션6: 
+- [색션6](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
+
+### 색션7: 
+- [색션7](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
+
+### 색션8: 
+- [색션8](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
+
+### 색션9: 
+- [색션9](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
+
