@@ -19,9 +19,9 @@
 ### 색션7: 유니온 타입, 인터섹션 타입
 - [색션7](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
-### 색션8: 
+### 색션8: 이넘
 - [색션8](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
-### 색션9: 
+### 색션9: 클래스
 - [색션9](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
