@@ -25,3 +25,5 @@
 ### 색션9: 클래스
 - [색션9](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note)
 
+### 색션10: 제네릭
+- [색션10](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s10-11)
