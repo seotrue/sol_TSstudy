@@ -8,7 +8,7 @@
 - [색션3](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s1-9)
 
 ### 색션4: 할일 관리 애플리케이션 
-- [색션4](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz)
+- [색션4](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz/1_todo/src)
 
 ### 색션5: 인터페이스
 - [색션5](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s1-9)
@@ -29,3 +29,4 @@
 - [색션10](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s10-11)
 
 ### 실습: 전화번호부 애플리케이션
+- [색션10](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz/2_address-book)
