@@ -33,3 +33,6 @@
 
 ### 색션12: 추론
 - [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s12-14)
+
+### 색션13: 타입 단언
+- [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s12-14)

@@ -58,3 +58,75 @@ var arr = [1, 2, true, true, 'a'];
 - 타입스트립트 랭기지 서버거 돌기때문에 타입추론이 가능
 
 ### 색션13: 타입 단언
+- 타입단언: 타입스크립트보다 개발자가 더 잘 알고 있다 TS 넌 신경 말고 개발자가 주는 타입으로 추론해라
+```
+// 타입 단언(type assertion)
+var a;
+a = 20;
+a = 'a';
+
+// 맨처음에 a가 any로 선언됬기 때문에 그이후 값을 정의해도 b에 a의 타입을 할당 할때도 any가 됨
+// as 키워드 사용으로 타입스크립트보다 개발자가 더 잘 알고 있다 TS 넌 신경 말고 개발자가 주는 타입으로 추론해라 라는 의미
+var b = a as string;
+```
+- DOM API 조작 - 사례
+```javascript
+// <div id="app">hi</div>
+//돔 특정 태그에 접근: HTNLDivElement | null로 추론
+var div = document.querySelector('div');
+if (div) { // null 체크 해줘야함
+    div.innerText
+}
+
+//HTNLDivElement 로 추론
+var div = document.querySelector('div') as HTNLDivElement;
+div.innerText // 이미 HTNLDivElement로 단언한 시점에 할당해서 null 체크 안해도 됨
+```
+
+### 색션14: 타입가드
+- 타입 단언으로 범위 줄여나가면서 추론
+```
+interface Developer {
+    name: string;
+    skill: string;
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+function introduce(): Developer | Person {
+    return { name: 'Tony', age: 33, skill: 'Iron Making' }
+}
+var tony = introduce();
+// 유니온은 공통된 속성만 제공 => 리턴값으로 스킬을 주는데도 no
+console.log(tony.skill); // name만 접근 가능
+
+// (tony as Developer)로 단언했기때문에 skil로 사용 가능 -> 타입 단언으로 범위를 줄어 나갈수 있다
+if ((tony as Developer).skill) {
+    // 단점은 내부에서도 단언을 해줘야한다 => 코드 중복성
+    var skill = (tony as Developer).skill;
+    console.log(skill);
+} else if ((tony as Person).age) {
+    var age = (tony as Person).age;
+    console.log(age);
+}
+```
+
+##### 타입가드소개와 적용
+- target is Developer 넘겨받은 파라미터가 해당 그 타입인지 구분하는 코드
+- 키워드 is
+```
+// 타입 가드 정의
+// target is Developer 넘겨받은 파라미터가 해당 그 타입인지 구분하는 코드
+function isDeveloper(target: Developer | Person): target is Developer {
+    return (target as Developer).skill !== undefined;
+}
+
+if (isDeveloper(tony)) {
+    console.log(tony.skill);
+} else {
+    console.log(tony.age);
+}
+```
