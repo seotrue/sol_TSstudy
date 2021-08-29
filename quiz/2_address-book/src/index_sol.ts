@@ -1,15 +1,4 @@
-interface PhoneNumberDictionary {
-  [phone: string]: {
-    num: number;
-  };
-}
-// 전화번호 규격
-interface Contact {
-  name: string;
-  address: string;
-  phones: PhoneNumberDictionary;
-}
-
+export { Contact, PhoneType } from './types'
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
 function fetchContacts(): Promise<Contact []> {
@@ -53,11 +42,6 @@ function fetchContacts(): Promise<Contact []> {
   return new Promise(resolve => {
     setTimeout(() => resolve(contacts), 2000);
   });
-}
-enum PhoneType {
-  Home = 'home',
-  Office = 'office',
-  Studio = 'studio'
 }
 // main
 class AddressBook {

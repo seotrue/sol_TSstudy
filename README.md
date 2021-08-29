@@ -36,3 +36,12 @@
 
 ### 색션13: 타입 단언
 - [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s12-14)
+
+### 색션14: 타입 가드
+- [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s15-18)
+
+### 색션15: 타입 호환
+- [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s15-18)
+
+### 색션16: 타입 모듈화
+- [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s15-18)
