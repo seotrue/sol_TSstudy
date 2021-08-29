@@ -29,4 +29,7 @@
 - [색션10](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s10-11)
 
 ### 실습: 전화번호부 애플리케이션
-- [색션10](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz/2_address-book)
+- [색션11](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/quiz/2_address-book)
+
+### 색션12: 추론
+- [색션12](https://github.com/learn-typescript-study/sol_TSstudy/tree/main/class-note/s12-14)
