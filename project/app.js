@@ -39,11 +39,24 @@ let isDeathLoading = false;
 let isRecoveredLoading = false;
 
 // api
+// typedef:타입 별칭 같은 역홯
+/**
+ * @typedef {object} CovidSummary
+ * @property {Array<object>} Country
+ * */
 
+// api
+/**
+ * @returns {Promise<CovidSummary>}
+ */
 function fetchCovidSummary() {
     const url = 'https://api.covid19api.com/summary';
     return axios.get(url);
 }
+fetchCovidSummary().then(res => {
+    // res.Country 미리보기로 접근 가능
+    console.log(res.Country)
+})
 
 function fetchCountryInfo(countryCode, status) {
     console.log(countryCode, status,'countryCode, status')
