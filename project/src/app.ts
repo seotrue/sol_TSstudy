@@ -1,4 +1,5 @@
-
+import axios from 'axios';
+import * as Chart from "chart.js"; // 라이브러르 들고 오는 es6 관련 문법해서 * as Chat로 들고 온다
 // utils
 function $(selector: string) { // 태그, 아이디, 등을 들고 오기때문에 string
     return document.querySelector(selector);

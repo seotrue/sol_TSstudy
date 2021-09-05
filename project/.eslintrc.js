@@ -10,12 +10,13 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  plugins: ['prettier', '@typescript-eslint'],
+
+  plugins: ['prettier', '@editor.codeActionsOnSavetypescript-eslint'],
   rules: {
     'prettier/prettier': [
       'error',
       {
-        singleQuote: true,
+        singleQuote: true, //작은 따음표,
         semi: true,
         useTabs: false,
         tabWidth: 2,
