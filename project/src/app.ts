@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
-import * as Chart from "chart.js";
+import Chart from "chart.js";
 import * as url from "url"; // 라이브러르 들고 오는 es6 관련 문법해서 * as Chat로 들고 온다
 
 // 타입 모듈
@@ -29,6 +29,7 @@ const recoveredList = $('.recovered-list');
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
+// 로딩 ui
 function createSpinnerElement(id:string) { /// id에 들어갈 문자열 이기에
     const wrapperDiv = document.createElement('div');
     wrapperDiv.setAttribute('id', id);
@@ -46,7 +47,6 @@ function createSpinnerElement(id:string) { /// id에 들어갈 문자열 이기�
 
 // state
 let isDeathLoading = false;
-let isRecoveredLoading = false;
 
 
 // api
@@ -191,8 +191,9 @@ async function setupData() {
     setLastUpdatedTimestamp(data);
 }
 
-function renderChart(data:any, labels:any) {
-    var ctx = $('#lineChart').getContext('2d');
+function renderChart(data:number[], labels:string[]) {
+    const lineChart = $('#lineChart') as HTMLCanvasElement;
+    var ctx = lineChart.getContext('2d');
     Chart.defaults.color = '#f5eaea';
     Chart.defaults.font.family = 'Exo 2';
     console.log(Chart,'?')
@@ -213,12 +214,12 @@ function renderChart(data:any, labels:any) {
     });
 }
 
-function setChartData(data:any) {
+function setChartData(data: CountrySummaryResponse) {
     console.log(data,'data')
-    const chartData = data.slice(-14).map(value => value.Cases);
+    const chartData = data.slice(-14).map((value: CountrySummaryInfo) => value.Cases);
     const chartLabel = data
         .slice(-14)
-        .map(value => new Date(value.Date).toLocaleDateString().slice(5, -1));
+        .map((value: CountrySummaryInfo) => new Date(value.Date).toLocaleDateString().slice(5, -1));
     renderChart(chartData, chartLabel);
 }
 
