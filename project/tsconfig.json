@@ -8,7 +8,9 @@
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
     "noImplicitAny": true,
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "strict": true,
+    "strictFunctionTypes": false
   },
   "include": ["./src/**/*"]
 }

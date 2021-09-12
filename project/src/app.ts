@@ -5,8 +5,10 @@ import * as url from "url"; // 라이브러르 들고 오는 es6 관련 문법�
 // 타입 모듈
 import {CountrySummaryResponse, CovidSummaryReponse, Country, CountrySummaryInfo} from './covid/index_sol'
 // utils
-function $(selector: string) { // 태그, 아이디, 등을 들고 오기때문에 string
-    return document.querySelector(selector);
+// HTMLElement하위 타입듷만 할수잇게 제한두자!
+function $<T extends HTMLElement = HTMLDivElement>(selector: string) { // 태그, 아이디, 등을 들고 오기때문에 string
+    const element =  document.querySelector(selector);
+    return element as T // 로 하면 원래 Element |  null 로 추론 되던게 자연스럽게 제네릭으로 넣어준 타입으로 추론간으
 } // 자동적으로 반환겂이 Element로 추론
 
 // 내장 객체면 이미 타입이 추론
@@ -17,12 +19,13 @@ function getUnixTimestamp(date: Date | string) {
 // DOM
 var a: Element | HTMLElement | HTMLParagraphElement // 위계적인 질서 타입을 가지고 있임
 // util함수 때문에 결과로 Element로 나온것 => index.html의 해당 선택자 태그를 보면 span이이니깐 HTMLSapnElemnet
-const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
+const confirmedTotal = $<HTMLSpanElement>('.confirmed-total');
 
 // $의 리턴값이 Element 이기때문에 타입단언: 타입스크립트보다 개발자가 더 잘 알고 있다 TS 넌 신경 말고 개발자가 주는 타입으로 추론해라 으로 리턴값으로 넣어준다?
 const deathsTotal = $('.deaths') as HTMLParagraphElement; //p태그이니깐
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
 const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
+// 밑에두 똑같이 타입을 단언하면 됨
 const rankList = $('.rank-list');
 const deathsList = $('.deaths-list');
 const recoveredList = $('.recovered-list');
@@ -64,7 +67,7 @@ enum CovidStatus {
     Deaths  = 'deaths'
 }
 
-function fetchCountryInfo(countryName: string, status: CovidStatus): Promise<AxiosResponse<CountrySummaryResponse>> {
+function fetchCountryInfo(countryName: string | undifined, status: CovidStatus): Promise<AxiosResponse<CountrySummaryResponse>> {
     // status params: confirmed, recovered, deaths
     const url = `https://api.covid19api.com/country/${countryName}/status/${status}`;
     return axios.get(url);
@@ -78,16 +81,21 @@ function startApp() {
 
 // events
 function initEvents() {
+    // rankList이 null일수도 잇으니 타입가드로 체크해줘야함 "strictFunctionTypes": true 여서 일어남
+    if (!rankList) {
+        return;
+    }
     rankList.addEventListener('click', handleListClick);
 }
 
-async function handleListClick(event: MouseEvent) {
+async function handleListClick(event: Event) {
     let selectedId;
     if (
         event.target instanceof HTMLParagraphElement ||
         event.target instanceof HTMLSpanElement
     ) {
-        selectedId = event.target.parentElement.id;
+         //  언디파인 체크
+        selectedId = event.target.parentElement?.id;
     }
     if (event.target instanceof HTMLLIElement) {
         selectedId = event.target.id;
@@ -132,12 +140,21 @@ function setDeathsList(data: CountrySummaryResponse) {
         p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
         li.appendChild(span);
         li.appendChild(p);
-        deathsList.appendChild(li);
+        // 방법1
+        // if (!deathsList) {
+        //     return;
+        // }
+        //const a = document.querySelector('.ccc') /// 의 반환타입은 Element | null
+        // deathsList이 null이 아니다,  non-null assertiob
+        deathsList!.appendChild(li);
     });
 }
 
 function clearDeathList() {
-    deathsList.innerHTML = null;
+    if (!deathsList) {
+        return
+    }
+    deathsList.innerHTML = '';
 }
 
 function setTotalDeathsByCountry(data: CountrySummaryResponse) {
@@ -159,7 +176,7 @@ function setRecoveredList(data: CountrySummaryResponse) {
         p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
         li.appendChild(span);
         li.appendChild(p);
-        recoveredList.appendChild(li);
+        recoveredList?.appendChild(li);
     });
 }
 
