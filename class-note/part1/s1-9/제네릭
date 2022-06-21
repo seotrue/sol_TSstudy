@@ -1,0 +1,18 @@
+//  sol w작성
+
+interface Email {
+  value: string,
+  selected: boolean
+}
+// 타입이 유동적으로 변경 될수 잇도록 유연하가 그게 제네릭으로 사용 할수 잇다
+//일반적인 제네릭 사용법
+function logText<T>(text:T):T {
+  return text
+}
+const str = logText<string>('ki')
+
+// 인터페이스 제네릭 사용법
+interface Interface<T> {
+  value: T
+}
+const obj: Interface<number> ={value:2}
